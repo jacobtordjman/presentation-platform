@@ -1,13 +1,18 @@
 // Import necessary models
-const Presentation = require('../models/presentation');
-const Slide = require('../models/slide');
+const mongoose = require("mongoose");
+const Presentation = require("../models/presentation");
+const Slide = require("../models/slide");
 
 // Create a new presentation
 exports.createPresentation = async (req, res) => {
   const { title, authors } = req.body;
 
   try {
-    const newPresentation = new Presentation({ title, authors });
+    const newPresentation = new Presentation({
+      _id: new mongoose.Types.ObjectId(),
+      title,
+      authors,
+    });
     await newPresentation.save();
     res.status(201).json(newPresentation);
   } catch (error) {
@@ -15,11 +20,14 @@ exports.createPresentation = async (req, res) => {
   }
 };
 
-// Get a presentation by title
-exports.getPresentationByTitle = async (req, res) => {
+// Get a presentation by id
+exports.getPresentationById = async (req, res) => {
   try {
-    const presentation = await Presentation.findOne({ title: req.params.title }).populate('slides');
-    if (!presentation) return res.status(404).json({ message: 'Presentation not found' });
+    const presentation = await Presentation.findOne({
+      _id: req.params.id,
+    }).populate("slidesIds");
+    if (!presentation)
+      return res.status(404).json({ message: "Presentation not found" });
     res.json(presentation);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -29,20 +37,21 @@ exports.getPresentationByTitle = async (req, res) => {
 // Get all presentations
 exports.getAllPresentations = async (req, res) => {
   try {
-    const presentations = await Presentation.find().populate('slides');
+    const presentations = await Presentation.find().populate("slidesIds");
     res.json(presentations);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// Alter the authors list
-exports.alterAuthorsList = async (req, res) => {
+// Update the authors list
+exports.updateAuthorsList = async (req, res) => {
   const { authors } = req.body;
 
   try {
-    const presentation = await Presentation.findOne({ title: req.params.title });
-    if (!presentation) return res.status(404).json({ message: 'Presentation not found' });
+    const presentation = await Presentation.findOne({ _id: req.params.id });
+    if (!presentation)
+      return res.status(404).json({ message: "Presentation not found" });
 
     presentation.authors = authors;
     await presentation.save();
@@ -54,14 +63,17 @@ exports.alterAuthorsList = async (req, res) => {
 };
 
 // Delete a presentation
-exports.deletePresentation = async (req, res) => {
+exports.deletePresentationById = async (req, res) => {
   try {
-    const presentation = await Presentation.findOneAndDelete({ title: req.params.title });
-    if (!presentation) return res.status(404).json({ message: 'Presentation not found' });
+    const presentation = await Presentation.findOneAndDelete({
+      _id: req.params.id,
+    });
+    if (!presentation)
+      return res.status(404).json({ message: "Presentation not found" });
 
-    await Slide.deleteMany({ presentation: presentation._id });
+    await Slide.deleteMany({ presentationId: presentation._id });
 
-    res.json({ message: 'Presentation deleted' });
+    res.json({ message: "Presentation deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

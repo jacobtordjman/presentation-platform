@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const slideSchema = new Schema({
   content: { type: String, required: true },
-  presentation: {
+  presentationId: {
     type: Schema.Types.ObjectId,
     ref: "Presentation",
     required: true,
