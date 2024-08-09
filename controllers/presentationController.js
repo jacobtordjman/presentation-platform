@@ -8,6 +8,15 @@ exports.createPresentation = async (req, res) => {
   const { title, authors } = req.body;
 
   try {
+    const presentationByTitle = await Presentation.findOne({
+      title
+    });
+
+    // If a presentation with the same title exists, send a conflict response
+    if (presentationByTitle) {
+      throw Error("Presentation with this title already exists.");
+    }
+    
     const newPresentation = new Presentation({
       _id: new mongoose.Types.ObjectId(),
       title,
