@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const presentationSchema = new Schema({
@@ -8,9 +8,9 @@ const presentationSchema = new Schema({
   slides: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Slide'
-    }
-  ]
+      ref: "Slide",
+    },
+  ],
 });
 
-module.exports = mongoose.model('Presentation', presentationSchema);
+module.exports = mongoose.model("Presentation", presentationSchema);
