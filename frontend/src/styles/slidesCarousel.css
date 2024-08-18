@@ -1,0 +1,60 @@
+.slide-carousel {
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .slide-carousel .slide-preview {
+    padding: 20px;
+  }
+  
+  .slide-carousel h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+  }
+  
+  .slide-carousel p {
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  
+  .carousel-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .carousel-navigation button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-navigation button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .carousel-navigation button:hover:not(:disabled) {
+    background-color: #ddd;
+  }
+  
+  .carousel-navigation span {
+    font-size: 1.2em;
+  }
+  

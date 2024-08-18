@@ -1,101 +1,190 @@
-/* src/styles/dashboard.css */
-
 /* General styling */
 .dashboard {
-    padding: 80px 20px 20px; /* Adjust for navbar spacing */
-    max-width: 800px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  
-  /* Carousel styling */
-  .presentation-carousel {
-    text-align: left;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .presentation-carousel h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-  }
-  
-  .presentation-carousel p {
-    font-size: 1em;
-    margin: 10px 0;
-  }
-  
-  .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .nav-button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .nav-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .nav-button:hover:not(:disabled) {
-    background-color: #ddd;
-  }
-  
-  /* Actions styling */
-  .actions {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .action-button {
-    border-radius: 5px;
-    flex: 1;
-    margin: 0 5px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-btn {
-    background-color: #28a745;
-  }
-  
-  .update-btn {
-    background-color: #ffc107;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-  }
-  
-  .action-button:hover {
-    opacity: 0.8;
-  }
+  padding: 80px 20px 20px; /* Adjust for navbar spacing */
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Carousel styling */
+.presentation-carousel {
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.presentation-carousel h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.presentation-carousel p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: #ddd;
+}
+
+/* Actions styling */
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-button {
+  border-radius: 5px;
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-btn {
+  background-color: #28a745;
+}
+
+.update-btn {
+  background-color: #ffc107;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.action-button:hover {
+  opacity: 0.8;
+}
+
+.create-presentation-container-title {
+  width: 100%;
+  margin-bottom: 20px; /* Add some spacing below the title */
+  font-size: 1.5em;
+  color: #333;
+}
+
+.create-presentation-container {
+  display: flex;
+  flex-direction: column; /* Flex direction column to place title on top */
+  align-items: flex-start;
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create-presentation-body {
+  display: flex;
+  width: 100%;
+  justify-content: space-between; /* Ensure the input and button containers are spread across the width */
+  align-items: center; /* Align items vertically */
+}
+
+.create-input-group {
+  display: flex;
+  flex-direction: column;
+  width: 60%; /* Adjust width to control space between inputs and buttons */
+  margin-right: 20px; /* Add some space between input and button group */
+}
+
+.create-input-group input {
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+}
+
+.create-button-group {
+  display: flex;
+  flex-direction: column;
+  width: 35%; /* Adjust width so that it complements the input group width */
+  align-items: flex-end;
+  padding-bottom: 21px;
+}
+
+.create-button-group button {
+  padding: 10px 20px;
+  font-size: 1em;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.create-presentation-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.cancel-presentation-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.create-presentation-button:hover {
+  background-color: #45a049;
+}
+
+.cancel-presentation-button:hover {
+  background-color: #e53935;
+}
+
+.error-message {
+  color: #dc3545; /* Red color to indicate error */
+  margin-top: 10px;
+  font-size: 1em;
+}

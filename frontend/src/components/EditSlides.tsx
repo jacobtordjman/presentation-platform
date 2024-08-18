@@ -1,5 +1,3 @@
-// src/components/EditSlides.tsx
-
 import React, { useState } from 'react';
 import { Slide, Presentation } from '../types';
 import SlideCarousel from './SlidesCarousel';
@@ -34,21 +32,18 @@ const EditSlides: React.FC<EditSlidesProps> = ({ presentation, onUpdate }) => {
     }
   };
 
-  const [newSlides, setNewSlides] = useState<Slide[]>([]);
-
   const handleAddSlide = () => {
     const newSlide: Slide = {
       content: '',
       presentationId: presentation._id,
       _id: `temp-${Date.now()}` // Temporary ID to distinguish new slides
     };
-  
+
     const updatedSlides = [...presentation.slidesIds, newSlide];
     onUpdate(updatedSlides);
     setCurrentIndex(updatedSlides.length - 1);
     setContent('');
   };
-  
 
   const handleNext = () => {
     if (currentIndex < presentation.slidesIds.length - 1) {
@@ -68,7 +63,7 @@ const EditSlides: React.FC<EditSlidesProps> = ({ presentation, onUpdate }) => {
     <div className="edit-slides-container">
       <h2>Edit Slide {currentIndex + 1}</h2>
 
-      <label htmlFor="slide-content">Slide Content</label>
+      <label htmlFor="slide-content">Slide Content: </label>
       <textarea
         id="slide-content"
         value={content}
@@ -76,14 +71,13 @@ const EditSlides: React.FC<EditSlidesProps> = ({ presentation, onUpdate }) => {
         className="input-field"
       />
 
-      <div className="navigation">
+      <div className="button-group">
         <button onClick={handlePrev} disabled={currentIndex === 0}>Previous</button>
         <button onClick={handleNext} disabled={currentIndex === presentation.slidesIds.length - 1}>Next</button>
+        <button onClick={handleSave} className="save-button">Save Slide</button>
+        <button onClick={handleAddSlide} className="add-slide-button">Add Slide</button>
+        <button onClick={handleDeleteSlide} className="delete-slide-button">Delete Slide</button>
       </div>
-
-      <button onClick={handleSave} className="save-button">Save Slide</button>
-      <button onClick={handleAddSlide} className="add-slide-button">Add Slide</button>
-      <button onClick={handleDeleteSlide} className="delete-slide-button">Delete Slide</button>
 
       <div className="slide-preview-carousel">
         <h3>Preview Slides</h3>

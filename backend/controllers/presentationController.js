@@ -3,31 +3,27 @@ const mongoose = require("mongoose");
 const Presentation = require("../models/presentation");
 const Slide = require("../models/slide");
 
-// Create a new presentation
+// src/controllers/presentationController.js
+
 exports.createPresentation = async (req, res) => {
   const { title, authors } = req.body;
 
   try {
-    const presentationByTitle = await Presentation.findOne({
-      title
-    });
-
-    // If a presentation with the same title exists, send a conflict response
-    if (presentationByTitle) {
-      throw Error("Presentation with this title already exists.");
+    // Check if a presentation with the same title already exists
+    const existingPresentation = await Presentation.findOne({ title });
+    if (existingPresentation) {
+      return res.status(400).json({ message: "A presentation with this title already exists." });
     }
-    
-    const newPresentation = new Presentation({
-      _id: new mongoose.Types.ObjectId(),
-      title,
-      authors,
-    });
+
+    const newPresentation = new Presentation({ title, authors });
     await newPresentation.save();
+
     res.status(201).json(newPresentation);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: "Failed to create presentation." });
   }
 };
+
 
 // Get a presentation by id
 exports.getPresentationById = async (req, res) => {

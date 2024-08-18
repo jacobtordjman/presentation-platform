@@ -17,7 +17,7 @@ const PresentationCarousel: React.FC<PresentationCarouselProps> = ({ presentatio
     <div className="presentation-carousel">
       <h2>{presentation.title}</h2>
       <p>By: {presentation.authors.join(', ')}</p>
-      <p>{new Date(presentation.dateOfPublishment).toLocaleDateString()}</p>
+      <p>Last Changed: {new Date(presentation.dateOfPublishment).toLocaleDateString()}</p>
       <div className="navigation">
         <button className="nav-button" onClick={onPrev} disabled={currentIndex === 0}>Previous</button>
         <span>{currentIndex + 1} of {total}</span>

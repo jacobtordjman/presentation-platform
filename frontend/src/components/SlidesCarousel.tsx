@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Slide } from '../types';
+import '../styles/slidesCarousel.css'
 
 interface SlideCarouselProps {
   slides: Slide[];
@@ -17,7 +18,7 @@ const SlideCarousel: React.FC<SlideCarouselProps> = ({ slides, currentIndex, onN
         <>
           <div className="slide-preview">
             <h3>Slide {currentIndex + 1}</h3>
-            <p>{slides[currentIndex].content}</p>
+            <p>content: {slides[currentIndex].content}</p>
           </div>
           <div className="carousel-navigation">
             <button onClick={onPrev} disabled={currentIndex === 0}>Previous</button>
