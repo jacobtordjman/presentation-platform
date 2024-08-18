@@ -53,16 +53,28 @@ exports.getAllPresentations = async (req, res) => {
   }
 };
 
-// Update the authors list
-exports.updateAuthorsList = async (req, res) => {
-  const { authors } = req.body;
+// Update the entire presentation
+exports.updatePresentation = async (req, res) => {
+  const { title, authors, slidesIds } = req.body;
 
   try {
     const presentation = await Presentation.findOne({ _id: req.params.id });
-    if (!presentation)
+    if (!presentation) {
       return res.status(404).json({ message: "Presentation not found" });
+    }
 
-    presentation.authors = authors;
+    if (title !== undefined) {
+      presentation.title = title;
+    }
+
+    if (authors !== undefined) {
+      presentation.authors = authors;
+    }
+
+    if (slidesIds !== undefined) {
+      presentation.slidesIds = slidesIds;
+    }
+
     await presentation.save();
 
     res.json(presentation);

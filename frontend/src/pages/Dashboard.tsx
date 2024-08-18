@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getPresentations, createPresentation, deletePresentation } from '../services/presentationApi';
 import { Presentation } from '../types';
+import Navbar from '../components/Navbar';
+import PresentationCarousel from '../components/PresentationCarousel';
+import Actions from '../components/Actions';
 import '../styles/dashboard.css';
 
 const Dashboard: React.FC = () => {
@@ -70,24 +73,21 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <Navbar />
       {presentations.length > 0 && (
-        <div className="presentation-carousel">
-          <h2>{currentPresentation.title}</h2>
-          <p>By: {currentPresentation.authors.join(', ')}</p>
-          <p>{new Date(currentPresentation.dateOfPublishment).toLocaleDateString()}</p>
-          <div className="navigation">
-            <button className="nav-button" onClick={handlePrev} disabled={currentIndex === 0}>Previous</button>
-            <span>{currentIndex + 1} of {presentations.length}</span>
-            <button className="nav-button" onClick={handleNext} disabled={currentIndex === presentations.length - 1}>Next</button>
-          </div>
-        </div>
+        <PresentationCarousel
+          presentation={currentPresentation}
+          currentIndex={currentIndex}
+          total={presentations.length}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
       )}
-      <div className="actions">
-        <button className="action-button create-btn" onClick={() => setShowCreateForm(true)}>Create Presentation</button>
-        <button className="action-button update-btn" onClick={() => navigate(`/presentation/${currentPresentation._id}`)}>Update Presentation</button>
-        <button className="action-button delete-btn" onClick={() => setShowDeleteConfirm(true)}>Delete Presentation</button>
-      </div>
+      <Actions
+        onCreate={() => setShowCreateForm(true)}
+        onUpdate={() => navigate(`/presentation/${currentPresentation._id}`)}
+        onDelete={() => setShowDeleteConfirm(true)}
+      />
 
       {showCreateForm && (
         <div className="create-form">

@@ -1,15 +1,6 @@
-/* src/styles/dashboard.css */
+/* src/styles/presentationCarousel.css */
 
-/* General styling */
-.dashboard {
-    padding: 80px 20px 20px; /* Adjust for navbar spacing */
-    max-width: 800px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  
-  /* Carousel styling */
-  .presentation-carousel {
+.presentation-carousel {
     text-align: left;
     margin-bottom: 20px;
     padding: 20px;
@@ -27,12 +18,12 @@
   }
   
   .presentation-carousel h2 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     margin-bottom: 15px;
   }
   
   .presentation-carousel p {
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 10px 0;
   }
   
@@ -62,40 +53,3 @@
     background-color: #ddd;
   }
   
-  /* Actions styling */
-  .actions {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .action-button {
-    border-radius: 5px;
-    flex: 1;
-    margin: 0 5px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-btn {
-    background-color: #28a745;
-  }
-  
-  .update-btn {
-    background-color: #ffc107;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-  }
-  
-  .action-button:hover {
-    opacity: 0.8;
-  }

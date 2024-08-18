@@ -1,9 +1,9 @@
 // src/types/index.ts
 
 export interface Slide {
-    _id: string;
     content: string;
     presentationId: string;
+    _id: string;
   }
   
   export interface Presentation {

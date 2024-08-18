@@ -35,3 +35,25 @@
     width: 100%;
   }
   
+  /* Reduce the default font size for the entire website */
+body, button, input, textarea {
+    font-size: 14px; /* Adjust this value to control the overall font size */
+    font-family: 'Arial', sans-serif; /* Ensure a consistent font family */
+  }
+  
+  h1 {
+    font-size: 2em; /* Adjust header sizes as needed */
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  h3 {
+    font-size: 1.25em;
+  }
+  
+  label {
+    font-size: 1em;
+  }
+  

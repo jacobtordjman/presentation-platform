@@ -1,0 +1,34 @@
+/* src/styles/actions.css */
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-btn {
+    background-color: #28a745;
+  }
+  
+  .update-btn {
+    background-color: #ffc107;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .action-button:hover {
+    opacity: 0.8;
+  }
+  
