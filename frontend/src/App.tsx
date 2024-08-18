@@ -1,16 +1,20 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import PresentationPreview from "./pages/PresentationPreview";
+// src/App.tsx
 
-const App: React.FC = () => {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Updated imports
+import Dashboard from './pages/Dashboard';
+import PresentationPreview from './pages/PresentationPreview';
+import './styles/global.css';
+
+function App() {
   return (
     <Router>
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Dashboard />} />
         <Route path="/presentation/:id" element={<PresentationPreview />} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;

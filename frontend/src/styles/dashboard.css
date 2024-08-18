@@ -1,0 +1,178 @@
+/* src/styles/dashboard.css */
+
+/* General styling */
+.dashboard {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
+    background-color: #f8f9fa; /* Light gray background for the header */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Carousel styling */
+  .presentation-carousel {
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
+    padding: 20px; /* Add padding inside the carousel container */
+  }
+  
+  .presentation-carousel h2 {
+    font-size: 2.5em; /* Increased text size */
+    margin-bottom: 15px;
+  }
+  
+  .presentation-carousel p {
+    font-size: 1.5em; /* Increased text size */
+    margin: 10px 0; /* Add margin between text */
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .nav-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .nav-button:hover:not(:disabled) {
+    background-color: #ddd;
+  }
+  
+  /* Actions styling */
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-btn {
+    background-color: #28a745;
+  }
+  
+  .update-btn {
+    background-color: #ffc107;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .action-button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Form styling */
+  .create-form {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .create-form h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  .create-form input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1.1em;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .create-form button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Delete confirmation styling */
+  .delete-confirm {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .delete-confirm p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .delete-confirm button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-confirm button:first-of-type {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-confirm button:first-of-type:hover {
+    background-color: #c82333;
+  }
+  
+  .delete-confirm button:last-of-type {
+    background-color: #ccc;
+  }
+  
+  .delete-confirm button:last-of-type:hover {
+    background-color: #bbb;
+  }
+  
