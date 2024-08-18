@@ -1,14 +1,13 @@
-// src/pages/PresentationPreview.tsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPresentationById, updatePresentation } from '../services/presentationApi';
-import { createSlide } from '../services/slideApi'
+import { createSlide } from '../services/slideApi';
 import { Presentation, Slide } from '../types';
 import Navbar from '../components/Navbar';
 import EditPresentation from '../components/EditPresentation';
 import EditSlides from '../components/EditSlides';
 import '../styles/presentationPreview.css';
+import { useDebouncedCallback } from 'use-debounce';
 
 const PresentationPreview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,7 +41,7 @@ const PresentationPreview: React.FC = () => {
     setUnsavedChanges(true);
   };
 
-  const handleSaveChanges = async () => {
+  const debouncedSaveChanges = useDebouncedCallback(async () => {
     try {
       // First, save any new slides
       const newSlides = presentation!.slidesIds.filter(slide => slide._id.startsWith('temp-'));
@@ -60,8 +59,11 @@ const PresentationPreview: React.FC = () => {
       console.error('Failed to save changes', error);
       alert('Failed to save changes');
     }
+  }, 500);
+
+  const handleSaveChanges = () => {
+    debouncedSaveChanges();
   };
-  
 
   const handleBackToDashboard = () => {
     if (unsavedChanges) {

@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar";
 import PresentationCarousel from "../components/PresentationCarousel";
 import Actions from "../components/Actions";
 import "../styles/dashboard.css";
+import { useDebouncedCallback } from 'use-debounce';
 
 const Dashboard: React.FC = () => {
   const [presentations, setPresentations] = useState<Presentation[]>([]);
@@ -18,7 +19,7 @@ const Dashboard: React.FC = () => {
   const [newAuthors, setNewAuthors] = useState("");
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");  // State to hold error message
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +33,14 @@ const Dashboard: React.FC = () => {
     }
     fetchPresentations();
   }, []);
+
+  const debouncedSetNewPresentationTitle = useDebouncedCallback((value: string) => {
+    setNewPresentationTitle(value);
+  }, 300);
+
+  const debouncedSetNewAuthors = useDebouncedCallback((value: string) => {
+    setNewAuthors(value);
+  }, 300);
 
   const currentPresentation = presentations[currentIndex];
 
@@ -58,17 +67,10 @@ const Dashboard: React.FC = () => {
       setNewPresentationTitle("");
       setNewAuthors("");
       setShowCreateForm(false);
-      setErrorMessage("");  // Clear any previous error message
-    } catch (error) {
-        const err = error as any;  // Type assertion to any
-      
-        if (err.response && err.response.data.message) {
-          setErrorMessage(err.response.data.message);  // Set error message from backend
-        } else {
-          setErrorMessage("Failed to create presentation.");
-        }
-      }
-      
+      setErrorMessage("");
+    } catch (error: any) {
+      setErrorMessage(error.response?.data.message || "Failed to create presentation.");
+    }
   };
 
   const handleDeletePresentation = async () => {
@@ -114,14 +116,14 @@ const Dashboard: React.FC = () => {
                 type="text"
                 placeholder="Title"
                 value={newPresentationTitle}
-                onChange={(e) => setNewPresentationTitle(e.target.value)}
+                onChange={(e) => debouncedSetNewPresentationTitle(e.target.value)}
               />
               <input
                 id="presentation-authors"
                 type="text"
                 placeholder="Authors (comma separated)"
                 value={newAuthors}
-                onChange={(e) => setNewAuthors(e.target.value)}
+                onChange={(e) => debouncedSetNewAuthors(e.target.value)}
               />
             </div>
             <div className="create-button-group">
